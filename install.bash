@@ -1,29 +1,52 @@
+###
+ # @Description: 
+ # @Author: Wawoo
+ # @Date: 2024-06-04 16:02:48
+ # @LastEditTime: 2024-06-04 16:32:08
+ # @LastEditors: Wawoo
+### 
 #!/bin/bash
 
+mkdir /etc/matrixio-devices/
+mkdir /usr/share/matrixlabs
 mkdir /usr/share/matrixlabs/matrixio-devices
-cp -avr blob cfg sam3-program.bash fpga-program.bash em358-program.bash creator-init.bash radio-init.bash firmware_info mcu_firmware.version matrixlabs_edit_settings.py matrixlabs_remove_console.py 
-
 mkdir /usr/share/matrixlabs/matrixio-devices/config
-cp -avr boot_modifications.txt /usr/share/matrixlabs/matrixio-devices/config
 
-cp -avr matrix-creator-firmware.service /lib/systemd/system
-cp -avr matrix-creator-reset-jtag /usr/bin
-cp -avr creator-mics.conf /etc/modules-load.d
-cp -avr raspicam.conf /etc/modules-load.d
-cp -avr asound.conf /etc/
+cp -avr blob \
+        cfg \
+        /usr/share/matrixlabs/matrixio-devices
 
-echo "Enabling firmware loading at startup"
-systemctl enable matrix-creator-firmware
+cp -av sam3-program.bash \
+       voice.version \
+       fpga-program.bash \
+       em358-program.bash \
+       matrix-init.bash \
+       radio-init.bash \
+       ./build/cpp/firmware_info \
+       ./build/cpp/fpga_info \
+       mcu_firmware.version \
+       matrixlabs_edit_settings.py \
+       matrixlabs_remove_console.py \
+       /usr/share/matrixlabs/matrixio-devices
 
-# This didn't work due to an unresolved shared library.
-# Asking users to reboot after installation.
-# echo "Loading firmware..."
-# service matrix-creator-firmware start
+cp -av voice_esp32_enable \
+       voice_esp32_reset \
+       /usr/bin
 
-echo "Enabling SPI"
-cp /boot/config.txt /boot/config.txt.bk && /usr/share/matrixlabs/matrixio-devices/matrixlabs_edit_settings.py /boot/config.txt.bk /usr/share/matrixlabs/matrixio-devices/config/boot_modifications.txt > /boot/config.txt
+cp -av boot_modifications.txt \
+       /usr/share/matrixlabs/matrixio-devices/config
 
-echo "Disable UART console"
-/usr/share/matrixlabs/matrixio-devices/matrixlabs_remove_console.py
+cp -av matrixio-devices-firmware.service \
+       /lib/systemd/system
 
-echo "Please restart your Raspberry Pi after installation"
+cp -av matrix-creator-reset-jtag \
+       /usr/bin
+
+cp -av matrix-mics.conf \
+       /etc/modules-load.d
+
+cp -av raspicam.conf \
+       /etc/modules-load.d
+
+cp -av matrix_voice.config \
+       /etc/matrixio-devices/

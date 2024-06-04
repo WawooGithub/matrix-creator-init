@@ -1,3 +1,10 @@
+###
+ # @Description: 
+ # @Author: Wawoo
+ # @Date: 2024-06-04 16:02:48
+ # @LastEditTime: 2024-06-04 16:33:51
+ # @LastEditors: Wawoo
+### 
 #!/bin/bash
 
 cd /usr/share/matrixlabs/matrixio-devices
@@ -24,10 +31,11 @@ case "${MATRIX_DEVICE}" in
     echo "*** MATRIX Voice initial process has been launched"
     voice_esp32_reset
     read_voice_config
+    # Pi GPIO 25 > stm32mp157-dk2 GPIO 84
     if [ "${ESP32_RESET}" == "FALSE" ]; then
-      echo 1 > /sys/class/gpio/gpio25/value
+      echo 1 > /sys/class/gpio/gpio84/value
     else 
-      echo 0 > /sys/class/gpio/gpio25/value
+      echo 0 > /sys/class/gpio/gpio84/value
     fi
     ;;
 esac

@@ -1,15 +1,23 @@
+###
+ # @Description: 
+ # @Author: Wawoo
+ # @Date: 2024-06-04 16:02:48
+ # @LastEditTime: 2024-06-04 16:13:15
+ # @LastEditors: Wawoo
+### 
 #!/bin/bash
 
 cd /usr/share/matrixlabs/matrixio-devices
 
 P4DETECT=$(grep "Pi 4" /sys/firmware/devicetree/base/model)
 
+# Pi GPIO26 > stm32mp157-dk2 GPIO85
 function reset_voice(){
-  echo 26 > /sys/class/gpio/export 2>/dev/null
-  echo out > /sys/class/gpio/gpio26/direction
-  echo 1 > /sys/class/gpio/gpio26/value
-  echo 0 > /sys/class/gpio/gpio26/value
-  echo 1 > /sys/class/gpio/gpio26/value 
+  echo 85 > /sys/class/gpio/export 2>/dev/null
+  echo out > /sys/class/gpio/gpio85/direction
+  echo 1 > /sys/class/gpio/gpio85/value
+  echo 0 > /sys/class/gpio/gpio85/value
+  echo 1 > /sys/class/gpio/gpio85/value 
   sleep 2
 }
 

@@ -1,16 +1,25 @@
+###
+ # @Description: 
+ # @Author: Wawoo
+ # @Date: 2024-06-04 16:02:48
+ # @LastEditTime: 2024-06-04 16:31:40
+ # @LastEditors: Wawoo
+### 
 #!/bin/bash
 
 function voice_esp32_reset()
 {
-	echo 25 > /sys/class/gpio/export 2> /dev/null
-	echo out > /sys/class/gpio/gpio25/direction
+	# Pi GPIO 25 > stm32mp157-dk2 GPIO 84
+	echo 84 > /sys/class/gpio/export 2> /dev/null
+	echo out > /sys/class/gpio/gpio84/direction
 
-	echo 24 > /sys/class/gpio/export 2> /dev/null
-	echo out > /sys/class/gpio/gpio24/direction
+	# Pi GPIO 24 > stm32mp157-dk2 GPIO 80
+	echo 80 > /sys/class/gpio/export 2> /dev/null
+	echo out > /sys/class/gpio/gpio80/direction
 
-	echo 1 > /sys/class/gpio/gpio24/value
-	echo 0 > /sys/class/gpio/gpio25/value
-	echo 1 > /sys/class/gpio/gpio25/value
+	echo 1 > /sys/class/gpio/gpio80/value
+	echo 0 > /sys/class/gpio/gpio84/value
+	echo 1 > /sys/class/gpio/gpio84/value
 }
 
 voice_esp32_reset
