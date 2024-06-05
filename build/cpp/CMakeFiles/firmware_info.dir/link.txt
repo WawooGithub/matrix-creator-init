@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/firmware_info.dir/firmware_info.cpp.o -o firmware_info  -Wl,-rpath,/usr/local/lib /usr/local/lib/libmatrix_creator_hal.so 

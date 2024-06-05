@@ -1,0 +1,6 @@
+/home/ubuntu/Project/matrix-creator-init/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/Project/matrix-creator-init/build/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/Project/matrix-creator-init/build/cpp/CMakeFiles/firmware_info.dir
+/home/ubuntu/Project/matrix-creator-init/build/cpp/CMakeFiles/fpga_info.dir
+/home/ubuntu/Project/matrix-creator-init/build/cpp/CMakeFiles/edit_cache.dir
+/home/ubuntu/Project/matrix-creator-init/build/cpp/CMakeFiles/rebuild_cache.dir

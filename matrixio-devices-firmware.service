@@ -1,9 +1,11 @@
 [Unit]
-Description=MATRIX start up service (MATRIX Voice - MATRIX Creator)
+Description=MATRIX start up service (MATRIX Voice for stm32mp157f-dk2)
 
 [Service]
 Type=oneshot
-ExecStart=/usr/share/matrixlabs/matrixio-devices/matrix-init.bash
+ExecStart=sudo /usr/bin/bash /usr/share/matrixlabs/matrixio-devices/matrix-init.bash
+User=root
+Group=root
 
 [Install]
 WantedBy=multi-user.target

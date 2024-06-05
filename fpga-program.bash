@@ -94,7 +94,8 @@ function check_voice() {
   fi
 }
 
-program_creator # If MATRIX Creator has not been detected, try with MATRIX Voice steps
+# some pins of creator have been occupied in stmewmp157f-dk2, so stop the attemption of programming the creator
+# program_creator # If MATRIX Creator has not been detected, try with MATRIX Voice steps
 check_voice
 
 echo "**** Could not program FPGA"

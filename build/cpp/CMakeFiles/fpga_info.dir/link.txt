@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/fpga_info.dir/fpga_info.cpp.o -o fpga_info  -Wl,-rpath,/usr/local/lib /usr/local/lib/libmatrix_creator_hal.so 
